@@ -46,7 +46,10 @@ It does not yet include accounts, cloud persistence, multi-user collaboration, s
 
 - `index.html` — complete static application
 - `docs/validation-report-delivery.md` — repeatable human-led delivery process for the report
+- `docs/paid-pilot-offer.md` — scoped offer and engagement boundaries
+- `docs/sample-validation-report.md` — explicitly fictional example of the deliverable
 - `docs/release-checklist.md` — functional and trust-boundary acceptance checks
+- `docs/product-roadmap.md` — stage gates that prioritize paid validation before backend build
 
 ## License
 
