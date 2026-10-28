@@ -1,40 +1,45 @@
 # VentureLabs
 
-**VentureLabs Reconciliation Workbench** compares two business CSV exports and produces a reviewable exception report.
+**VentureLabs — Venture Validation Studio** helps founders turn an early idea into a testable commercial hypothesis, identify risky assumptions, and choose a validation experiment before investing in a build.
 
-## What it does
+VentureLabs is intentionally separate from LedgerTrace. LedgerTrace focuses on financial-record reconciliation and discrepancies; VentureLabs focuses on venture decision-making and early demand validation.
 
-- Parses CSV files in the browser.
-- Matches records using a shared column.
-- Flags records missing from either source.
-- Flags duplicate and blank matching keys.
-- Compares shared fields and lists value mismatches.
-- Exports exceptions to a separate CSV report.
-- Includes sample data to test the workflow without uploading business data.
+## Included
+
+- Responsive, neutral editorial interface with subtle motion and an animated thesis-map illustration.
+- Interactive thesis worksheet covering target customer, problem, current workaround, frequency, consequence, budget owner, urgency, access to customers, and evidence.
+- Heuristic readout with an overall signal score and four component indicators.
+- Next-step recommendation based on the submitted inputs.
+- Illustrative example to explore the workflow.
+- Export of an editable Markdown thesis brief and copy-to-clipboard action.
+- Reset, input validation, mobile layout, keyboard-accessible form controls, and reduced-motion support.
 
 ## Run locally
 
-Open `index.html` in a modern browser. No build step, dependencies, API keys, or server are required.
+Open `index.html` in a modern browser. No build step, external dependencies, API keys, or server are required.
 
-Or deploy the repository as a static site with GitHub Pages or Cloudflare Pages. Set the build command to empty and the output directory to the repository root.
+For a static deployment, use the repository root as the output directory and leave the build command empty.
 
-## Important behavior and limits
+## Data handling
 
-- All file parsing and comparison run client-side in the browser. This page contains no upload endpoint or analytics integration.
-- CSV files are limited to 15 MB in this prototype.
-- The matching key is selected from shared column names. Rename headers in one of the exports if the key columns use different names.
-- When a key appears more than once, the report flags it and compares the first occurrence only. Resolve duplicate keys before relying on field comparisons for those records.
-- Values are compared as text after trimming surrounding whitespace. Key normalization is configurable; field values are not coerced into numeric or date types.
-- This is a decision-support tool, not an accounting system. Review exception evidence and source records before changing payments, inventory, or financial records.
+The worksheet runs in the browser. This page does not send the entered thesis to a server or require an account. The exported Markdown file is generated locally on request.
 
-## Test it
+## Important limitations
 
-1. Open the app.
-2. Click **Load sample** on both source cards.
-3. Click **Run reconciliation**.
-4. Review the mismatches, missing records, duplicate keys, and matched records.
-5. Export the exception report.
+- The signal score is a heuristic derived from the user-entered fields. It is not a probability of startup success and should not be treated as objective market validation.
+- The example is explicitly illustrative. It does not represent customer interviews, confirmed demand, or a real pilot.
+- The page does not perform live market research, verify competitors, estimate market size, contact customers, or validate willingness to pay.
+- Recommendations are prompts for founder-led validation. Confirm assumptions through real customer behavior before making material investment decisions.
+- No backend, accounts, persistent cloud storage, integrations, team collaboration, or audit trail are included.
+
+## Suggested workflow
+
+1. Define one specific target customer and a concrete problem.
+2. Describe the current workaround and consequences.
+3. Record the strongest evidence actually observed.
+4. Assess the thesis and review the weakest signal.
+5. Export the brief, run the recommended experiment, and update the thesis when new evidence arrives.
 
 ## Project status
 
-An early static prototype. It does not connect to Shopify, an ERP, accounting software, or a payment provider. Integration, access controls, audit logging, and production validation are not included.
+A functional, browser-based venture-validation worksheet. Commercial demand for the product itself has not been validated by this implementation.
