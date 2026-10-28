@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" role="img" aria-labelledby="title">
+  <title id="title">VentureLabs mark</title>
+  <path d="M7 34.5 17 10l6 15 6-8 12 17.5" stroke="#c0b283" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="17" cy="10" r="2.5" fill="#c0b283"/>
+  <circle cx="29" cy="17" r="2.5" fill="#c0b283"/>
+</svg>
