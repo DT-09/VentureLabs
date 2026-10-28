@@ -1,45 +1,53 @@
 # VentureLabs
 
-**VentureLabs — Venture Validation Studio** helps founders turn an early idea into a testable commercial hypothesis, identify risky assumptions, and choose a validation experiment before investing in a build.
+**VentureLabs is an evidence-led venture validation workspace.** It helps a founder turn an early business idea into a falsifiable commercial thesis, keep a record of what has actually been observed, define experiments before running them, and produce a decision report that makes uncertainty visible.
 
-VentureLabs is intentionally separate from LedgerTrace. LedgerTrace focuses on financial-record reconciliation and discrepancies; VentureLabs focuses on venture decision-making and early demand validation.
+Live product: https://venturelabs.pages.dev/  
+Source: https://github.com/DT-09/VentureLabs
 
-## Included
+## Product workflow
 
-- Responsive, neutral editorial interface with subtle motion and an animated thesis-map illustration.
-- Interactive thesis worksheet covering target customer, problem, current workaround, frequency, consequence, budget owner, urgency, access to customers, and evidence.
-- Heuristic readout with an overall signal score and four component indicators.
-- Next-step recommendation based on the submitted inputs.
-- Illustrative example to explore the workflow.
-- Export of an editable Markdown thesis brief and copy-to-clipboard action.
-- Reset, input validation, mobile layout, keyboard-accessible form controls, and reduced-motion support.
+1. **Define the thesis.** Specify the customer, problem, current workaround, frequency, consequence, buyer, urgency, access, and current evidence.
+2. **Review the signals.** The assessment is a heuristic prompt for discussion, not a market-validation score or probability of success.
+3. **Maintain a venture workspace.** Save multiple ventures and record the current stage, decision deadline, and decision question.
+4. **Record evidence.** Capture evidence type, status, observation, source, date, and implication. Distinguish assumptions from observed or corroborated evidence.
+5. **Pre-register experiments.** Record a hypothesis, sample/scope, deadline, and pass/fail thresholds before interpreting the outcome.
+6. **Generate a decision report.** The report includes the current recommendation, thesis, heuristic signals, evidence ledger, experiments, gaps, next steps, and limitations.
+7. **Export and protect the work.** Export the report as Markdown or export/restore the entire workspace as a JSON backup.
 
-## Run locally
+## Run and deploy
 
-Open `index.html` in a modern browser. No build step, external dependencies, API keys, or server are required.
+This is a static, browser-based application. Open `index.html` directly or serve the repository root using any static web server. There is no build step.
 
-For a static deployment, use the repository root as the output directory and leave the build command empty.
+For Cloudflare Pages, use the repository root as the project root, leave the build command empty, and use `/` as the output directory. Deployments from the connected Git repository are controlled by the Cloudflare Pages project configuration.
 
-## Data handling
+## Data handling and recovery
 
-The worksheet runs in the browser. This page does not send the entered thesis to a server or require an account. The exported Markdown file is generated locally on request.
+- Venture records are stored in the current browser's `localStorage`; they are not uploaded to a VentureLabs backend.
+- Data is not automatically shared across devices or team members.
+- Use **Export full backup** to download a JSON file containing saved ventures, evidence, and experiments. Store that file somewhere safe.
+- **Restore backup** replaces the workspace in the current browser after confirmation. Export the current workspace first if it needs to be preserved.
+- Markdown reports and the JSON backup are generated in the browser.
+- Do not enter confidential customer information, personal data, trade secrets, or regulated information into a local prototype unless you understand and accept the device/browser risks.
 
-## Important limitations
+## Trust boundaries
 
-- The signal score is a heuristic derived from the user-entered fields. It is not a probability of startup success and should not be treated as objective market validation.
-- The example is explicitly illustrative. It does not represent customer interviews, confirmed demand, or a real pilot.
-- The page does not perform live market research, verify competitors, estimate market size, contact customers, or validate willingness to pay.
-- Recommendations are prompts for founder-led validation. Confirm assumptions through real customer behavior before making material investment decisions.
-- No backend, accounts, persistent cloud storage, integrations, team collaboration, or audit trail are included.
+VentureLabs does **not** independently interview customers, verify sources, contact prospects, confirm competitor claims, estimate market size, validate willingness to pay, or establish product-market fit. It organizes user-entered information and makes gaps more visible. A claim marked “observed” is a status selected by the user, not an independent verification by VentureLabs.
 
-## Suggested workflow
+Scores are heuristic and input-dependent. Missing evidence means unknown, not positive evidence. A polished report is not proof of demand.
 
-1. Define one specific target customer and a concrete problem.
-2. Describe the current workaround and consequences.
-3. Record the strongest evidence actually observed.
-4. Assess the thesis and review the weakest signal.
-5. Export the brief, run the recommended experiment, and update the thesis when new evidence arrives.
+## Current status
 
-## Project status
+The static MVP includes a thesis worksheet, heuristic assessment, local multi-venture workspace, evidence ledger, experiment tracker, decision report, Markdown export, full JSON backup/restore, responsive layout, and reduced-motion support.
 
-A functional, browser-based venture-validation worksheet. Commercial demand for the product itself has not been validated by this implementation.
+It does not yet include accounts, cloud persistence, multi-user collaboration, server-side backups, billing, automated market research, or independent source verification. Commercial willingness to pay for VentureLabs itself has not yet been demonstrated. The next meaningful milestone is to use the report workflow with real, permissioned founder inputs and establish whether a clearly scoped report is valuable enough for a paid pilot before adding infrastructure.
+
+## Repository map
+
+- `index.html` — complete static application
+- `docs/validation-report-delivery.md` — repeatable human-led delivery process for the report
+- `docs/release-checklist.md` — functional and trust-boundary acceptance checks
+
+## License
+
+No open-source license is currently specified. Unless a license is added, do not assume the code is licensed for reuse or redistribution.
