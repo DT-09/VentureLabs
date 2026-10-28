@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101310">
+<meta name="description" content="VentureLabs — a practical reconciliation workbench for finding missing, duplicated, and mismatched business records across two CSV exports.">
+<title>VentureLabs — Reconcile the records. Know what changed.</title>
+<style>
+:root{color-scheme:dark;--bg:#101310;--panel:#171b17;--panel2:#1c211c;--line:#30382f;--muted:#9da79a;--text:#edf0e8;--accent:#d7ff70;--accent-ink:#17200d;--red:#ff8c83;--amber:#f3c77a;--blue:#9bc6ff;--radius:16px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 70% -10%,#263022 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit}.wrap{max-width:1240px;margin:auto;padding:0 28px}.topbar{height:76px;border-bottom:1px solid #ffffff12;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:750;letter-spacing:-.04em;font-size:19px}.mark{width:31px;height:31px;border-radius:9px;background:var(--accent);color:#17200d;display:grid;place-items:center;font-weight:900;font-size:16px}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;margin-top:-3px}.nav{display:flex;align-items:center;gap:22px;color:var(--muted);font-size:13px}.nav a{text-decoration:none}.nav a:hover{color:var(--text)}.status{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#cbd6c4;border:1px solid var(--line);padding:7px 11px;border-radius:999px}.dot{width:7px;height:7px;background:var(--accent);border-radius:50%;box-shadow:0 0 12px #d7ff7066}.hero{padding:65px 0 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:45px;align-items:end}.eyebrow{color:var(--accent);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:750}.hero h1{font-size:clamp(40px,5.2vw,68px);line-height:.99;letter-spacing:-.065em;margin:17px 0 18px;max-width:750px}.hero h1 span{color:var(--accent)}.hero p{max-width:650px;color:#b6c0b1;font-size:16px;margin:0}.hero-note{border-left:1px solid var(--accent);padding:6px 0 6px 19px;color:#c3ccbf;font-size:13px;max-width:340px;justify-self:end}.hero-note strong{display:block;color:var(--text);font-size:14px;margin-bottom:7px}.workspace{border:1px solid var(--line);background:#141814eF;border-radius:22px;overflow:hidden;box-shadow:0 24px 90px #0004;margin-bottom:50px}.workhead{padding:20px 23px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:18px}.workhead h2{font-size:17px;letter-spacing:-.03em;margin:0}.workhead p{margin:3px 0 0;color:var(--muted);font-size:12px}.step{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:7px;padding:5px 8px;white-space:nowrap}.inputs{padding:22px;display:grid;grid-template-columns:1fr 1fr;gap:14px}.filebox{border:1px dashed #4a5646;background:#171d16;border-radius:13px;padding:18px;min-height:165px;position:relative;transition:border-color .2s,background .2s}.filebox.drag{border-color:var(--accent);background:#222b1b}.filetop{display:flex;align-items:center;justify-content:space-between;gap:12px}.filelabel{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}.fileicon{width:34px;height:34px;border:1px solid var(--line);border-radius:10px;display:grid;place-items:center;color:var(--accent);font-size:16px}.filename{font-weight:650;font-size:14px;margin:15px 0 3px;overflow-wrap:anywhere}.filehint{font-size:12px;color:var(--muted);margin:0 0 12px}.fileactions{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#242a22;color:var(--text);padding:9px 13px;border-radius:9px;font-size:12px;font-weight:650;transition:transform .12s,border-color .12s}.btn:hover{border-color:#778570;transform:translateY(-1px)}.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}.btn.primary:hover{background:#e1ff9b}.btn:disabled{opacity:.38;cursor:not-allowed;transform:none}.hidden{display:none!important}.config{padding:0 22px 22px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px}.field label{display:block;color:var(--muted);font-size:11px;margin:0 0 7px}.field select,.field input{width:100%;min-width:0;background:#101410;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:10px 11px;outline:none}.field select:focus,.field input:focus{border-color:var(--accent)}.runrow{padding:0 22px 22px;display:flex;justify-content:space-between;align-items:center;gap:14px}.privacy{color:var(--muted);font-size:11px;display:flex;align-items:center;gap:7px}.privacy svg{flex:none}.notice{margin:0 22px 22px;border:1px solid #5b4b29;background:#2b2518;color:#f1d9a8;border-radius:10px;padding:11px 13px;font-size:12px}.results{border-top:1px solid var(--line);padding:23px;animation:appear .3s ease}@keyframes appear{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}.resultshead{display:flex;justify-content:space-between;gap:20px;align-items:start;margin-bottom:19px}.resultshead h3{font-size:20px;letter-spacing:-.04em;margin:0}.resultshead p{color:var(--muted);font-size:12px;margin:4px 0 0}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:20px}.metric{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:15px}.metric .label{color:var(--muted);font-size:11px}.metric .num{font-size:29px;font-weight:720;letter-spacing:-.06em;margin-top:5px}.metric .sub{font-size:11px;color:var(--muted);margin-top:3px}.metric.bad .num{color:var(--red)}.metric.warn .num{color:var(--amber)}.metric.good .num{color:var(--accent)}.tabs{display:flex;gap:5px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:15px}.tab{background:transparent;border:0;border-bottom:2px solid transparent;color:var(--muted);padding:10px 12px;font-size:12px}.tab.active{border-bottom-color:var(--accent);color:var(--text)}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:11px}table{border-collapse:collapse;width:100%;min-width:700px;font-size:12px}th{text-align:left;background:#20261f;color:#b6c1b0;font-weight:650;white-space:nowrap}th,td{padding:11px 13px;border-bottom:1px solid #2a3128}td{color:#d9dfd5;vertical-align:top;max-width:320px;overflow-wrap:anywhere}tr:last-child td{border-bottom:0}.pill{display:inline-flex;border-radius:999px;padding:3px 7px;font-size:10px;font-weight:700;white-space:nowrap}.pill.missing{background:#402321;color:#ffaaa1}.pill.duplicate{background:#44351e;color:#f3cf8e}.pill.mismatch{background:#1d3040;color:#a7d0ff}.pill.match{background:#27351e;color:#d7ff70}.empty{padding:30px;text-align:center;color:var(--muted);font-size:13px}.empty strong{display:block;color:var(--text);font-size:14px;margin-bottom:5px}.resultfoot{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--muted);font-size:11px;margin-top:14px}.section{padding:20px 0 70px}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:18px}.sectionhead h2{font-size:26px;letter-spacing:-.05em;margin:0}.sectionhead p{color:var(--muted);font-size:13px;max-width:420px;margin:0}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stepcard{border:1px solid var(--line);background:#151915;border-radius:13px;padding:18px}.stepnum{font-size:11px;color:var(--accent);letter-spacing:.13em}.stepcard h3{font-size:15px;margin:11px 0 6px}.stepcard p{color:var(--muted);font-size:12px;margin:0}.footer{border-top:1px solid #ffffff12;padding:22px 0 30px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer strong{color:var(--text)}.toast{position:fixed;bottom:20px;right:20px;z-index:5;background:#e0ff99;color:#17200d;padding:12px 16px;border-radius:10px;font-size:12px;font-weight:700;box-shadow:0 8px 30px #0006;max-width:min(420px,calc(100vw - 40px))}.noscript{margin:20px;padding:15px;background:#442;color:white}
+@media(max-width:800px){.wrap{padding:0 16px}.hero{grid-template-columns:1fr;padding:44px 0 28px;gap:23px}.hero-note{justify-self:start}.nav{gap:12px}.nav a:not(:last-child){display:none}.inputs{grid-template-columns:1fr;padding:15px}.config{grid-template-columns:1fr;padding:0 15px 18px}.runrow{padding:0 15px 18px;align-items:start;flex-direction:column}.workhead{padding:17px 15px}.results{padding:16px}.metrics{grid-template-columns:repeat(2,1fr)}.sectionhead{display:block}.sectionhead p{margin-top:8px}.steps{grid-template-columns:1fr}.resultshead{align-items:start}.resultshead .btn{flex:none}.metric .num{font-size:25px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="wrap topbar">
+<a class="brand" href="#" aria-label="VentureLabs home"><span class="mark">V</span><span>venturelabs<small>operations intelligence</small></span></a>
+<nav class="nav" aria-label="Main navigation"><a href="#workflow">How it works</a><a href="#workspace">Workbench</a><span class="status"><span class="dot"></span> Runs locally</span></nav>
+</header>
+<main class="wrap">
+<section class="hero">
+<div><div class="eyebrow">CSV reconciliation workbench</div><h1>Find the records<br>that <span>don't agree.</span></h1><p>Compare two business exports. Surface missing records, duplicate keys, and field-level discrepancies in a report your team can act on.</p></div>
+<div class="hero-note"><strong>Built for operational exceptions.</strong> Not another spreadsheet viewer. VentureLabs turns two exports into a traceable exception list—without sending the files to a server.</div>
+</section>
+<section id="workspace" class="workspace" aria-labelledby="work-title">
+<div class="workhead"><div><h2 id="work-title">Reconciliation workbench</h2><p>Upload two CSVs, choose a shared key, and run a deterministic comparison.</p></div><span class="step">01 / COMPARE</span></div>
+<div class="inputs">
+<div class="filebox" id="boxA"><div class="filetop"><span class="filelabel">Source A · Reference</span><span class="fileicon">↗</span></div><div class="filename" id="nameA">No file selected</div><p class="filehint" id="hintA">Your baseline export (e.g. supplier invoice register).</p><div class="fileactions"><button class="btn" id="pickA">Choose CSV</button><button class="btn" id="sampleA">Load sample</button><input id="fileA" class="hidden" type="file" accept=".csv,text/csv"></div></div>
+<div class="filebox" id="boxB"><div class="filetop"><span class="filelabel">Source B · Compare</span><span class="fileicon">⇄</span></div><div class="filename" id="nameB">No file selected</div><p class="filehint" id="hintB">The export to validate (e.g. ERP or payment records).</p><div class="fileactions"><button class="btn" id="pickB">Choose CSV</button><button class="btn" id="sampleB">Load sample</button><input id="fileB" class="hidden" type="file" accept=".csv,text/csv"></div></div>
+</div>
+<div class="config">
+<div class="field"><label for="keyField">Record matching key</label><select id="keyField" disabled><option>Load two CSVs first</option></select></div>
+<div class="field"><label for="compareFields">Fields to compare</label><select id="compareFields"><option value="all">All shared columns</option><option value="selected">Select fields below</option></select></div>
+<div class="field"><label for="normalization">Matching behavior</label><select id="normalization"><option value="trimcase">Ignore surrounding spaces + case</option><option value="trim">Ignore surrounding spaces only</option><option value="exact">Exact key match</option></select></div>
+</div>
+<div id="fieldPicker" class="config hidden"><div class="field" style="grid-column:1/-1"><label>Choose comparison fields (hold Ctrl / Cmd for multiple)</label><select id="fieldSelect" multiple size="4"></select></div></div>
+<div class="runrow"><div class="privacy"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 118 0v3"/></svg> CSVs are parsed in this browser session. Nothing is uploaded by this page.</div><button class="btn primary" id="runBtn" disabled>Run reconciliation →</button></div>
+<div id="message" class="notice hidden" role="status"></div>
+<div id="results" class="results hidden" aria-live="polite"></div>
+</section>
+<section class="section" id="workflow">
+<div class="sectionhead"><h2>From exports to exceptions.</h2><p>Designed to make differences reviewable, not to silently rewrite your source data.</p></div>
+<div class="steps">
+<article class="stepcard"><div class="stepnum">STEP 01</div><h3>Bring both exports</h3><p>Upload CSV files from the systems you already use. Your source files remain unchanged.</p></article>
+<article class="stepcard"><div class="stepnum">STEP 02</div><h3>Match and compare</h3><p>Select a stable record key. Compare shared fields with clear, repeatable normalization rules.</p></article>
+<article class="stepcard"><div class="stepnum">STEP 03</div><h3>Export evidence</h3><p>Review missing keys, duplicate keys, and field mismatches. Download the exception report as CSV.</p></article>
+</div>
+</section>
+</main>
+<footer class="wrap footer"><span><strong>VentureLabs</strong> · Reconciliation workbench</span><span>Client-side prototype · Review exceptions before taking action.</span></footer>
+<div id="toast" class="toast hidden" role="status"></div>
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const state = {A:null,B:null,rowsA:[],rowsB:[],headersA:[],headersB:[],report:null,activeTab:'all'};
+const sampleA = 'invoice_id,supplier,sku,quantity,unit_price,status\nINV-1001,Northstar Supply,SKU-41,12,8.50,received\nINV-1002,Atlas Goods,SKU-18,5,24.00,received\nINV-1003,Northstar Supply,SKU-77,8,3.25,received\nINV-1004,Meridian Parts,SKU-22,2,110.00,pending\nINV-1005,Atlas Goods,SKU-90,10,6.00,received\nINV-1006,Northstar Supply,SKU-41,4,8.50,received';
+const sampleB = 'invoice_id,supplier,sku,quantity,unit_price,status\nINV-1001,Northstar Supply,SKU-41,12,8.50,received\nINV-1002,Atlas Goods,SKU-18,5,26.00,received\nINV-1003,Northstar Supply,SKU-77,8,3.25,received\nINV-1003,Northstar Supply,SKU-77,8,3.25,received\nINV-1004,Meridian Parts,SKU-22,2,110.00,received\nINV-1007,Atlas Goods,SKU-12,3,14.00,received\nINV-1006,Northstar Supply,SKU-41,4,8.50,received';
+function parseCSV(text) {
+  const rows=[]; let row=[],cell='',quoted=false;
+  text=String(text).replace(/^\uFEFF/,'');
+  for(let i=0;i<text.length;i++){
+    const c=text[i],n=text[i+1];
+    if(quoted){if(c==='"'&&n==='"'){cell+='"';i++;}else if(c==='"'){quoted=false;}else cell+=c;}
+    else if(c==='"'){quoted=true;}
+    else if(c===','){row.push(cell);cell='';}
+    else if(c==='\n'){row.push(cell);rows.push(row);row=[];cell='';}
+    else if(c==='\r'){if(n==='\n')i++;row.push(cell);rows.push(row);row=[];cell='';}
+    else cell+=c;
+  }
+  if(cell.length||row.length){row.push(cell);rows.push(row);}
+  const nonempty=rows.filter(r=>r.some(v=>String(v).trim()!==''));
+  if(nonempty.length<2)throw new Error('CSV needs a header row and at least one data row.');
+  const headers=nonempty[0].map((h,i)=>String(h).trim()||('column_'+(i+1)));
+  if(new Set(headers).size!==headers.length)throw new Error('Column names must be unique. Rename duplicate headers and try again.');
+  const data=nonempty.slice(1).map((r,i)=>{const o={};headers.forEach((h,j)=>o[h]=String(r[j]??'').trim());o.__row=i+2;return o;});
+  return {headers,rows:data};
+}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function setMessage(msg){$('message').textContent=msg;$('message').classList.toggle('hidden',!msg);}
+function toast(msg){$('toast').textContent=msg;$('toast').classList.remove('hidden');setTimeout(()=>$('toast').classList.add('hidden'),2600);}
+function setDataset(which,filename,text){
+ try{const parsed=parseCSV(text);state[which]={filename,text};state['rows'+which]=parsed.rows;state['headers'+which]=parsed.headers;$('name'+which).textContent=filename;$('hint'+which).textContent=parsed.rows.length+' records · '+parsed.headers.length+' columns';setMessage('');state.report=null;$('results').classList.add('hidden');syncFields();toast(filename+' loaded');}
+ catch(e){setMessage(e.message);}}
+function syncFields(){
+ const both=state.headersA.length&&state.headersB.length;
+ $('keyField').disabled=!both;$('runBtn').disabled=!both;
+ if(!both){$('keyField').innerHTML='<option>Load two CSVs first</option>';return;}
+ const shared=state.headersA.filter(h=>state.headersB.includes(h));
+ if(!shared.length){$('keyField').innerHTML='<option value="">No shared columns</option>';$('runBtn').disabled=true;setMessage('These files have no shared column names. Rename the matching key columns so both exports use the same header.');return;}
+ const old=$('keyField').value;
+ $('keyField').innerHTML=shared.map(h=>'<option value="'+esc(h)+'">'+esc(h)+'</option>').join('');
+ if(shared.includes(old))$('keyField').value=old;
+ const prev=[...$('fieldSelect').selectedOptions].map(o=>o.value);
+ $('fieldSelect').innerHTML=shared.map(h=>'<option value="'+esc(h)+'">'+esc(h)+'</option>').join('');
+ [...$('fieldSelect').options].forEach(o=>o.selected=prev.includes(o.value));
+ $('runBtn').disabled=false;
+}
+function norm(v,mode){let s=String(v??'');if(mode!=='exact')s=s.trim();if(mode==='trimcase')s=s.toLocaleLowerCase();return s;}
+function run(){
+ try{
+ const key=$('keyField').value;if(!key)throw new Error('Choose a matching key first.');
+ const mode=$('normalization').value;
+ const shared=state.headersA.filter(h=>state.headersB.includes(h));
+ const fields=$('compareFields').value==='selected'?[...$('fieldSelect').selectedOptions].map(o=>o.value).filter(h=>h!==key):shared.filter(h=>h!==key);
+ if(!fields.length)throw new Error('Select at least one shared field to compare, or use “All shared columns”.');
+ const index=(rows)=>{const map=new Map(),blank=[];for(const r of rows){const k=norm(r[key],mode);if(!k){blank.push(r);continue;}if(!map.has(k))map.set(k,[]);map.get(k).push(r);}return {map,blank};};
+ const a=index(state.rowsA),b=index(state.rowsB);
+ const duplicates=[];
+ for(const [k,rs] of a.map)if(rs.length>1)duplicates.push({source:'A',key:k,count:rs.length,rows:rs.map(r=>r.__row).join(', ')});
+ for(const [k,rs] of b.map)if(rs.length>1)duplicates.push({source:'B',key:k,count:rs.length,rows:rs.map(r=>r.__row).join(', ')});
+ const missingA=[],missingB=[],mismatches=[],matched=[];
+ for(const [k,rs] of a.map){
+  if(!b.map.has(k)){missingB.push({key:k,record:rs[0],source:'A'});continue;}
+  const bs=b.map.get(k);const ra=rs[0],rb=bs[0];let diffs=[];
+  for(const f of fields){const va=String(ra[f]??''),vb=String(rb[f]??'');if(va.trim()!==vb.trim())diffs.push({field:f,a:va,b:vb});}
+  if(diffs.length)mismatches.push({key:k,sourceA:ra,sourceB:rb,diffs});
+  else matched.push({key:k,sourceA:ra,sourceB:rb});
+ }
+ for(const [k,rs] of b.map)if(!a.map.has(k))missingA.push({key:k,record:rs[0],source:'B'});
+ state.report={key,fields,mode,missingA,missingB,duplicates,mismatches,matched,blankA:a.blank,blankB:b.blank,counts:{a:state.rowsA.length,b:state.rowsB.length}};
+ state.activeTab='all';renderResults();setMessage('');
+ }catch(e){setMessage(e.message);}
+}
+function renderResults(){
+ const r=state.report;if(!r)return;
+ const all=r.missingA.length+r.missingB.length+r.duplicates.length+r.mismatches.length+r.blankA.length+r.blankB.length;
+ const totalIssues=all;
+ $('results').innerHTML='<div class="resultshead"><div><h3>Reconciliation report</h3><p>Match key: <strong>'+esc(r.key)+'</strong> · Compared fields: '+r.fields.map(esc).join(', ')+' · '+(r.mode==='trimcase'?'trim + case-insensitive':r.mode==='trim'?'trim whitespace':'exact key')+'</p></div><button class="btn" id="exportBtn">Export exceptions ↓</button></div>'+
+ '<div class="metrics"><div class="metric"><div class="label">Records scanned</div><div class="num">'+(r.counts.a+r.counts.b)+'</div><div class="sub">'+r.counts.a+' in A · '+r.counts.b+' in B</div></div><div class="metric bad"><div class="label">Field mismatches</div><div class="num">'+r.mismatches.length+'</div><div class="sub">Matched keys, different values</div></div><div class="metric warn"><div class="label">Missing records</div><div class="num">'+(r.missingA.length+r.missingB.length)+'</div><div class="sub">Present in only one source</div></div><div class="metric '+(r.duplicates.length||r.blankA.length||r.blankB.length?'bad':'good')+'"><div class="label">Key exceptions</div><div class="num">'+(r.duplicates.length+r.blankA.length+r.blankB.length)+'</div><div class="sub">Duplicate or blank keys</div></div></div>'+
+ '<div class="tabs" role="tablist"><button class="tab active" data-tab="all">All exceptions ('+totalIssues+')</button><button class="tab" data-tab="mismatch">Mismatches ('+r.mismatches.length+')</button><button class="tab" data-tab="missing">Missing ('+(r.missingA.length+r.missingB.length)+')</button><button class="tab" data-tab="duplicate">Duplicates ('+r.duplicates.length+')</button><button class="tab" data-tab="blank">Blank keys ('+(r.blankA.length+r.blankB.length)+')</button><button class="tab" data-tab="matched">Matched ('+r.matched.length+')</button></div><div id="tableSlot"></div><div class="resultfoot"><span>Read-only comparison · First occurrence used for field comparison when keys repeat.</span><span>'+totalIssues+' exception entries</span></div>';
+ $('results').classList.remove('hidden');
+ $('exportBtn').addEventListener('click',exportReport);
+ $('results').querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{state.activeTab=b.dataset.tab;$('results').querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));renderTable();}));
+ renderTable();$('results').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function makeTable(headers,rows){
+ if(!rows.length)return '<div class="empty"><strong>No exceptions in this category.</strong>That is a useful result. Check the other categories for a complete picture.</div>';
+ return '<div class="tablewrap"><table><thead><tr>'+headers.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(row=>'<tr>'+row.map(v=>'<td>'+v+'</td>').join('')+'</tr>').join('')+'</tbody></table></div>';
+}
+function renderTable(){
+ const r=state.report,t=state.activeTab;let html='';
+ if(t==='mismatch'){
+ const rows=r.mismatches.flatMap(m=>m.diffs.map(d=>['<span class="pill mismatch">Mismatch</span>',esc(m.key),esc(d.field),'<span style="color:var(--muted)">A:</span> '+esc(d.a),'<span style="color:var(--muted)">B:</span> '+esc(d.b)]));
+ html=makeTable(['Type','Record key','Field','Source A','Source B'],rows);
+ }else if(t==='missing'){
+ const rows=[...r.missingA.map(m=>['<span class="pill missing">Missing in A</span>',esc(m.key),'Present in B',esc(Object.entries(m.record).filter(([k])=>k!=='__row').map(([k,v])=>k+': '+v).join(' · '))]),...r.missingB.map(m=>['<span class="pill missing">Missing in B</span>',esc(m.key),'Present in A',esc(Object.entries(m.record).filter(([k])=>k!=='__row').map(([k,v])=>k+': '+v).join(' · '))])];
+ html=makeTable(['Type','Record key','Status','Record values'],rows);
+ }else if(t==='duplicate'){
+ html=makeTable(['Type','Source','Record key','Occurrences','CSV row numbers'],r.duplicates.map(d=>['<span class="pill duplicate">Duplicate key</span>',esc(d.source),esc(d.key),d.count,esc(d.rows)]));
+ }else if(t==='blank'){
+ const rows=[...r.blankA.map(x=>['A',x.__row]),...r.blankB.map(x=>['B',x.__row])];
+ html=makeTable(['Source','CSV row','Issue'],rows.map(x=>[esc(x[0]),x[1],'<span class="pill missing">Blank matching key</span>']));
+ }else if(t==='matched'){
+ html=makeTable(['Type','Record key','Compared fields','Result'],r.matched.map(m=>['<span class="pill match">Matched</span>',esc(m.key),r.fields.length,'Values agree']));
+ }else{
+ const rows=[
+ ...r.mismatches.map(m=>['<span class="pill mismatch">Mismatch</span>',esc(m.key),esc(m.diffs.map(d=>d.field).join(', ')),m.diffs.length+' field(s) differ']),
+ ...r.missingA.map(m=>['<span class="pill missing">Missing in A</span>',esc(m.key),'—','Present only in B']),
+ ...r.missingB.map(m=>['<span class="pill missing">Missing in B</span>',esc(m.key),'—','Present only in A']),
+ ...r.duplicates.map(d=>['<span class="pill duplicate">Duplicate key</span>',esc(d.key),'Source '+esc(d.source),d.count+' occurrences']),
+ ...[...r.blankA.map(x=>({s:'A',n:x.__row})),...r.blankB.map(x=>({s:'B',n:x.__row}))].map(x=>['<span class="pill missing">Blank key</span>','CSV row '+x.n,'Source '+x.s,'Cannot match without key'])
+ ];
+ html=makeTable(['Exception','Record key','Field / source','Detail'],rows);
+ }
+ $('tableSlot').innerHTML=html;
+}
+function csvCell(v){const s=String(v??'');return /[",\r\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s;}
+function exportReport(){
+ const r=state.report;if(!r)return;const rows=[['exception_type','record_key','source','field','source_a_value','source_b_value','detail']];
+ r.mismatches.forEach(m=>m.diffs.forEach(d=>rows.push(['field_mismatch',m.key,'A vs B',d.field,d.a,d.b,'Values differ'])));
+ r.missingA.forEach(m=>rows.push(['missing_in_a',m.key,'B','','','','Record exists only in source B']));
+ r.missingB.forEach(m=>rows.push(['missing_in_b',m.key,'A','','','','Record exists only in source A']));
+ r.duplicates.forEach(d=>rows.push(['duplicate_key',d.key,d.source,'','','',d.count+' occurrences; CSV rows '+d.rows]));
+ r.blankA.forEach(x=>rows.push(['blank_key','', 'A','','','','CSV row '+x.__row]));
+ r.blankB.forEach(x=>rows.push(['blank_key','', 'B','','','','CSV row '+x.__row]));
+ const blob=new Blob(['\uFEFF'+rows.map(row=>row.map(csvCell).join(',')).join('\r\n')],{type:'text/csv;charset=utf-8;'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='venturelabs-exceptions-'+new Date().toISOString().slice(0,10)+'.csv';document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);toast('Exception report exported');
+}
+[['A','boxA'],['B','boxB']].forEach(([which,box])=>{
+ $('pick'+which).addEventListener('click',()=>$('file'+which).click());
+ $('file'+which).addEventListener('change',async e=>{const file=e.target.files&&e.target.files[0];if(file){if(file.size>15*1024*1024){setMessage('This prototype accepts CSV files up to 15 MB.');return;}setDataset(which,file.name,await file.text());}e.target.value='';});
+ const el=$(box);el.addEventListener('dragover',e=>{e.preventDefault();el.classList.add('drag')});el.addEventListener('dragleave',()=>el.classList.remove('drag'));el.addEventListener('drop',async e=>{e.preventDefault();el.classList.remove('drag');const f=[...(e.dataTransfer.files||[])].find(x=>/\.csv$/i.test(x.name)||x.type==='text/csv');if(f)setDataset(which,f.name,await f.text());else setMessage('Drop a .csv file to load it.');});
+});
+$('sampleA').addEventListener('click',()=>setDataset('A','sample-source-a.csv',sampleA));
+$('sampleB').addEventListener('click',()=>setDataset('B','sample-source-b.csv',sampleB));
+$('compareFields').addEventListener('change',()=> $('fieldPicker').classList.toggle('hidden',$('compareFields').value!=='selected'));
+$('runBtn').addEventListener('click',run);
+})();
+</script>
+</body>
+</html>
