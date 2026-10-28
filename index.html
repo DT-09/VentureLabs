@@ -86,6 +86,8 @@ html{scroll-padding-top:105px}
 
 .workspace-section{scroll-margin-top:105px}.workspace-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}.lower-workspace{margin-top:18px;grid-template-columns:1fr 1fr}.workspace-panel{padding:22px;min-width:0}.workspace-panel .panel-top{margin-bottom:18px}.saved-projects,.ledger-list{display:grid;gap:10px;margin-top:14px}.saved-item,.ledger-item,.experiment-item{border:1px solid var(--line);border-radius:12px;padding:13px;background:#151a2270;min-width:0}.saved-item{display:flex;justify-content:space-between;align-items:center;gap:10px}.saved-item strong,.ledger-item strong,.experiment-item strong{font-size:12px;display:block;overflow-wrap:anywhere}.saved-item small,.ledger-item small,.experiment-item small{display:block;color:var(--muted);font:10px/1.6 var(--mono);margin-top:4px}.item-actions{display:flex;gap:6px;flex-wrap:wrap;flex-shrink:0}.mini-btn{background:transparent;border:1px solid var(--line2);border-radius:8px;color:var(--ink2);font:10px var(--mono);padding:7px 9px}.mini-btn:hover{border-color:var(--accent);color:var(--accent)}.item-top{display:flex;justify-content:space-between;gap:12px;align-items:start}.status-pill{font:9px var(--mono);letter-spacing:.04em;border:1px solid var(--line2);border-radius:99px;padding:4px 7px;white-space:nowrap;color:var(--accent2)}.ledger-item p,.experiment-item p{font-size:12px;color:var(--ink2);white-space:pre-wrap;overflow-wrap:anywhere;margin:10px 0 0}.empty-state{color:var(--muted);font-size:12px;margin:0;padding:13px;border:1px dashed var(--line2);border-radius:10px}.report-intro,.report-note{font-size:12px;color:var(--muted);line-height:1.7}.report-gap{margin-top:14px}.report-preview{margin-top:18px;padding:16px;border:1px solid var(--line);border-radius:12px;background:#151a2270;max-height:260px;overflow:auto}.report-preview h4{font-size:13px;margin:12px 0 5px}.report-preview p{font-size:12px;color:var(--ink2);white-space:pre-wrap;overflow-wrap:anywhere}.report-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.report-actions .btn{flex:1;min-width:100px}.report-note{font-size:10px;margin:13px 0 0}.workspace-section .fields{gap:13px}.workspace-section .field textarea{min-height:70px}.workspace-section .form-foot{margin-top:16px}.workspace-section .form-foot small{max-width:65%}.topbar{left:50%;transform:translateX(-50%)}@media(max-width:900px){.workspace-grid,.lower-workspace{grid-template-columns:1fr}}@media(max-width:600px){.workspace-panel{padding:16px}.saved-item{align-items:flex-start;flex-direction:column}.workspace-section .form-foot small{max-width:100%}.report-actions{flex-direction:column}}
 
+
+.footer{display:flex;flex-direction:column;gap:26px}.footer-main{display:flex;justify-content:space-between;align-items:start;gap:30px}.footer-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:16px;border-top:1px solid var(--line);font:10px/1.6 var(--mono);letter-spacing:.07em;color:var(--muted)}.footer-signature{color:var(--ink2);text-align:right}.signature-separator{color:var(--accent);padding:0 8px}.footer-legal{white-space:nowrap}@media(max-width:600px){.footer-main,.footer-bottom{flex-direction:column;align-items:flex-start}.footer-signature{text-align:left}}
 </style>
 </head>
 <body>
@@ -221,7 +223,13 @@ html{scroll-padding-top:105px}
 <div class="boundary"><div><div class="eyebrow">Scope & trust</div><h3>A decision aid, not a market oracle.</h3><p>VentureLabs helps structure your next move. It does not independently verify customer demand or replace primary research.</p></div><ul><li><span class="check">✓</span><span>Runs locally in your browser; worksheet data is not sent to a server by this page.</span></li><li><span class="check">✓</span><span>Exports an editable thesis brief you can share or revise.</span></li><li><span class="cross">×</span><span>No automated market sizing, competitor verification, or external data checks.</span></li><li><span class="cross">×</span><span>A score is a heuristic completeness/signal guide, not a probability of success.</span></li></ul></div>
 </section>
 </main>
-<footer class="wrap footer"><div><div class="footer-brand">VENTURELABS</div><p>Clarity before commitment. Built for better venture decisions.</p></div><div class="footer-links"><a href="#studio">Open thesis studio</a><a href="#method">Method</a><a href="#top">Back to top ↑</a></div></footer>
+<footer class="wrap footer">
+  <div class="footer-main">
+    <div><div class="footer-brand">VENTURELABS</div><p>Clarity before commitment. Built for better venture decisions.</p></div>
+    <div class="footer-links"><a href="#studio">Open thesis studio</a><a href="#workspace">Evidence workspace</a><a href="#method">Method</a><a href="#top">Back to top ↑</a></div>
+  </div>
+  <div class="footer-bottom"><span class="footer-legal">© <span id="footerYear">2026</span> VentureLabs</span><span class="footer-signature">VENTURELABS <span class="signature-separator">/</span> TEST THE THESIS. THEN BUILD.</span></div>
+</footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script>
 (() => {
@@ -305,5 +313,6 @@ loadStore();
 })();
 </script>
 
+<script>document.getElementById('footerYear').textContent=new Date().getFullYear();</script>
 </body>
 </html>
