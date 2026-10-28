@@ -15,6 +15,10 @@ Source: https://github.com/DT-09/VentureLabs
 6. **Generate a decision report.** The report includes the current recommendation, thesis, heuristic signals, evidence ledger, experiments, gaps, next steps, and limitations.
 7. **Export and protect the work.** Export the report as Markdown or export/restore the entire workspace as a JSON backup.
 
+## Commercial offer
+
+VentureLabs can be engaged for a human-reviewed, evidence-led report around one live commercial decision. The deliverable is a decision brief, evidence/risk review, ranked critical assumptions, experiment plan with pass/fail thresholds, and written recommendation with limitations. Scope, timeline, fee, and payment terms are negotiated and confirmed in writing before custom work begins. The site’s request form opens a prefilled email to be reviewed and sent by the visitor; it is not a backend form, payment system, or booking confirmation. No customer engagement or revenue is claimed until it has actually happened.
+
 ## Run and deploy
 
 This is a static, browser-based application. Open `index.html` directly or serve the repository root using any static web server. There is no build step.
@@ -40,7 +44,7 @@ Scores are heuristic and input-dependent. Missing evidence means unknown, not po
 
 The static MVP includes a thesis worksheet, heuristic assessment, local multi-venture workspace, evidence ledger, experiment tracker, decision report, Markdown export, full JSON backup/restore, responsive layout, and reduced-motion support.
 
-It does not yet include accounts, cloud persistence, multi-user collaboration, server-side backups, billing, automated market research, or independent source verification. Commercial willingness to pay for VentureLabs itself has not yet been demonstrated. The next meaningful milestone is to use the report workflow with real, permissioned founder inputs and establish whether a clearly scoped report is valuable enough for a paid pilot before adding infrastructure.
+It does not yet include accounts, cloud persistence, multi-user collaboration, server-side backups, billing, automated market research, or independent source verification. Commercial willingness to pay for VentureLabs itself has not yet been demonstrated. The site now presents a scoped paid validation-review offer and an engagement-request flow. The next milestone is still a real paid engagement: agree the decision, inputs, deliverable, timeline, fee, payment method, and data boundaries in writing before starting custom work. The request form opens a prefilled email; it does not submit data to a server or create an automatic booking.
 
 ## Repository map
 
